@@ -1,8 +1,5 @@
 .App {
   text-align: left;
-}
-
-.App-list {
   background-color: white;
   min-height: 100vh;
   display: flex;
@@ -12,11 +9,6 @@
   font-size: 1.2em;
   color: rgb(18, 18, 18);
 }
-
-.App-link {
-  color: #300c39;
-}
-
 
 #logo{
 
@@ -32,7 +24,6 @@ ul {
 
 .list1{
   color:  #0048fe;
-  
 }
 .list2{
   color:  #b300ff;
