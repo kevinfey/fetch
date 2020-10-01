@@ -1,25 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState }  from 'react';
+import logo from './Fetch.png'
 import './App.css';
 
+
 function App() {
+
+  const getData = () => {
+    fetch('https://thingproxy.freeboard.io/fetch/http://fetch-hiring.s3.amazonaws.com/hiring.json'
+        )
+    .then(response => response.json())
+    .then(data => setList(data));
+  }
+
+  const [list, setList] = useState([])
+  getData()
+
+ const listMap = list.sort((a,b)=> a.id - b.id).sort((a,b)=> a.listId - b.listId).map((e) => {
+   if (e.name){
   return (
+    <li key={e.id}>
+   <span className={`list${e.listId}`}> List {e.listId} </span>{e.name}
+  </li>)
+   }
+  
+ })
+
+  return ( 
+    <>
+  <img id="logo" src={logo} alt="fetch-logo"></img>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+  
+      <header className="App-list">
+       
+         <ul>{listMap}</ul>
+
       </header>
     </div>
+    </>
   );
 }
 
